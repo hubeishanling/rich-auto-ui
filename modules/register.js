@@ -5,6 +5,7 @@
 var globalModule = require('./global.js');
 var automatorModule = require('./automator.js');
 var floatyModule = require('./floaty.js');
+var floatyManagerModule = require('./floaty-manager.js');
 var autojsModule = require('./autojs.js');
 var appModule = require('./app.js');
 var colorModule = require('./color.js');
@@ -19,6 +20,7 @@ var noticeModule = require('./notice.js');
 var httpModule = require('./http.js');
 var base64Module = require('./base64.js');
 var uiselectorModule = require('./uiselector.js');
+var businessModule = require('./business.js');
 
 module.exports = {
     /**
@@ -34,6 +36,9 @@ module.exports = {
 
         // 注册 floaty 模块
         floatyModule.register(jsBridge);
+        
+        // 注册 floaty-manager 模块（高级悬浮窗管理）
+        floatyManagerModule.register(jsBridge);
         
         // 注册 autojs 本体应用模块
         autojsModule.register(jsBridge);
@@ -76,6 +81,9 @@ module.exports = {
 
         // 注册 uiselector 模块
         uiselectorModule.register(jsBridge);
+
+        // 注册业务模块（登录、用户信息、游戏管理等）
+        businessModule.register(jsBridge);
 
         // TODO: 后续添加更多模块
         // uiModule.register(jsBridge);

@@ -1,29 +1,29 @@
 {
-    "assets": [],
-    "encryptLevel": 0,
-    "useFeatures": [],
-    "launchConfig": {
-        "displaySplash": true,
-        "hideLogs": false,
-        "splashText": "Powered by AutoJs6",
-        "stableMode": false
-    },
-    "main": "index.js",
-    "name": "simple-autojs-ui",
-    "optimization": {
-        "removeOpenCv": false,
-        "unusedResources": false
-    },
-    "packageName": "org.autojs.autojs6.simple_autojs_ui",
-    "scripts": {},
-    "versionCode": 1,
-    "versionName": "1.0.0",
-    "ignore": [
-        "/.internal/",
-        "/build/",
-        "/node_modules/",
-        "/out/",
-        "/declarations/",
-        "/autojs6-dts/"
-    ]
+  "abis": [],
+  "assets": [],
+  "build": {
+    "id": "19734553-17",
+    "number": 17,
+    "time": 1761922697671
+  },
+  "encryptAsPlugin": true,
+  "excludedDirs": [],
+  "useFeatures": [],
+  "launchConfig": {
+    "launcherVisible": true,
+    "logsVisible": true,
+    "splashVisible": true,
+    "permissions": [],
+    "slug": "Powered by AutoJs6"
+  },
+  "libs": [],
+  "main": "ui.js",
+  "name": "打包测试",
+  "packageName": "com.ocr.test",
+  "permissions": [],
+  "pluginAuthor": "",
+  "pluginDescription": "",
+  "signatureScheme": "V1 + V2",
+  "versionCode": 1,
+  "versionName": "1.0.0"
 }

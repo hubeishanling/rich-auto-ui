@@ -81,11 +81,11 @@
 </div>
 
 <div id="app"></div>
-<link rel="stylesheet" href="https://unpkg.com/vant@2.12/lib/index.css"/>
+<link rel="stylesheet" href="ext/index.css"/>
 
-<script src="https://unpkg.com/vue@2.6/dist/vue.min.js"></script>
-<script src="https://unpkg.com/vue3-sfc-loader@0.8.4/dist/vue2-sfc-loader.js"></script>
-<script src="https://unpkg.com/vant@2.12/lib/vant.min.js"></script>
+<script src="ext/vue.min.js"></script>
+<script src="ext/vue2-sfc-loader.js"></script>
+<script src="ext/vant.min.js"></script>
     <!-- 引入 events 库（autojs.sdk.v1.js 的依赖） -->
     <script src="autojs://events.js"></script>
     <!-- 引入 events 库（autojs.sdk.v1.js 的依赖） -->
@@ -127,13 +127,15 @@
                 return buf;
             }
         },
-        addStyle() {
-            /* unused here */
+        addStyle(textContent) {
+            const style = Object.assign(document.createElement('style'), { textContent });
+            const ref = document.head.getElementsByTagName('style')[0] || null;
+            document.head.insertBefore(style, ref);
         },
     };
 
-    // 等待 autojs 模块加载完成后再初始化 Vue 应用
-    window.addEventListener('autojs-ready', function() {
+    // 初始化 Vue 应用的函数
+    function initVueApp() {
         // 更新加载提示
         var loadingText = document.querySelector('.loading-text');
         var loadingDetail = document.getElementById('loading-detail');
@@ -177,7 +179,20 @@
                     window.__hideLoading();
                 }
             });
-    });
+    }
+    
+    // 等待 autojs 模块加载完成后再初始化 Vue 应用
+    // 如果已经就绪，直接初始化；否则等待事件
+    if (window.__autojs_ready) {
+        console.log('AutoJS 已就绪，直接初始化 Vue');
+        initVueApp();
+    } else {
+        console.log('等待 AutoJS 就绪事件...');
+        window.addEventListener('autojs-ready', function() {
+            console.log('收到 AutoJS 就绪事件');
+            initVueApp();
+        });
+    }
 </script>
 </body>
 

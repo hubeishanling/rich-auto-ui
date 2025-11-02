@@ -232,7 +232,7 @@ export default {
             try {
                 // 这里需要用户提供图像路径
                 // 示例：使用 sdcard 中的图片
-                const imagePath = '/sdcard/Pictures/test.jpg';
+                const imagePath = '/sdcard/screenshot.png';
                 
                 autojs.global.toastLog('正在识别图像文件: ' + imagePath);
                 const results = await autojs.ocr.recognizeText(imagePath);

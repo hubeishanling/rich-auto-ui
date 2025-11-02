@@ -234,13 +234,43 @@ module.exports = {
      * @param {string} htmlPath - HTML 文件路径（必填，如 'web/index.html'）
      * @param {Object} options - 可选配置
      * @param {boolean} options.enableConsoleLog - 是否启用控制台日志监听（默认 true）
+     * @param {boolean} options.disableCache - 是否禁用缓存（默认 true）
      */
     initWebView: function(webview, moduleRegister, htmlPath, options) {
         var self = this;
         options = options || {};
         var enableConsoleLog = options.enableConsoleLog !== false;
+        var disableCache = options.disableCache !== false;
         
-        // 1. 根据运行模式加载 WebView 内容
+        // 0. 配置 WebView 缓存设置
+        if (disableCache) {
+            try {
+                var settings = webview.getSettings();
+                // 禁用所有缓存
+                settings.setCacheMode(android.webkit.WebSettings.LOAD_NO_CACHE);
+                // 禁用应用缓存
+                settings.setAppCacheEnabled(false);
+                // 清除缓存
+                webview.clearCache(true);
+                console.log('[WebView] 缓存已禁用');
+            } catch (e) {
+                console.error('[WebView] 禁用缓存失败:', e);
+            }
+        }
+        
+        // 1. 设置 WebViewClient 来拦截资源请求（插件模式）
+        if (self.isPluginMode()) {
+            try {
+                var PluginWebViewClient = org.autojs.autojs.core.plugin.PluginWebViewClient;
+                var webViewClient = new PluginWebViewClient($registry, "web/", context);
+                webview.setWebViewClient(webViewClient);
+                console.log('[Plugin] 已设置 PluginWebViewClient，支持加载加密资源');
+            } catch (e) {
+                console.error('[Plugin] 设置 PluginWebViewClient 失败:', e);
+            }
+        }
+        
+        // 2. 根据运行模式加载 WebView 内容
         if (self.isPluginMode()) {
             // 插件模式：从内存加载 HTML
             console.log('[Plugin] 从内存加载 WebView 内容...');
@@ -279,13 +309,13 @@ module.exports = {
             webview.loadUrl('file://' + files.path(htmlPath));
         }
         
-        // 2. 注册所有模块的 handlers
+        // 3. 注册所有模块的 handlers
         if (moduleRegister && moduleRegister.registerAll) {
             moduleRegister.registerAll(webview.jsBridge);
             console.log('[WebView] 模块 handlers 已注册');
         }
         
-        // 3. 监听 WebView 的控制台消息
+        // 4. 监听 WebView 的控制台消息
         if (enableConsoleLog) {
             webview.events.on('console_message', function(event, msg) {
                 console.log(files.getName(msg.sourceId()) + ':' + msg.lineNumber() + ': ' + msg.message());
@@ -293,7 +323,9 @@ module.exports = {
             console.log('[WebView] 控制台消息监听已启用');
         }
         
-        // 4. 处理读取本地文件的请求（兼容插件和开发模式）
+        // 5. 处理读取本地文件的请求（兼容插件和开发模式）
+        // 注意：这个 handler 主要用于 init.js 内部的动态加载
+        // <script src> 标签的资源会被 PluginWebViewClient 拦截
         webview.jsBridge.handle('fetch', function(event, args) {
             var requestPath = args.path;
             console.log('[Fetch] 请求资源:', requestPath);

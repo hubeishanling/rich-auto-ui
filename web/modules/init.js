@@ -23,6 +23,7 @@
         'modules/engines.js',
         'modules/notice.js',
         'modules/floaty.js',
+        'modules/floaty-manager.js',
         'modules/http.js',
         'modules/base64.js'
         // TODO: 后续添加更多模块
@@ -108,7 +109,6 @@
                         reject(new Error('Failed to load script: ' + url));
                     });
             } else {
-                // 传统方式：创建 <script> 标签（用于浏览器调试）
                 var script = document.createElement('script');
                 script.type = 'text/javascript';
                 script.src = url;
@@ -195,6 +195,7 @@
             engines: window.__autojs_modules.engines || {},
             notice: window.__autojs_modules.notice || {},
             floaty: window.__autojs_modules.floaty || {},
+            floatyManager: window.__autojs_modules.floatyManager || {},
             http: window.__autojs_modules.http || {},
             base64: window.__autojs_modules.base64 || {}
             
@@ -212,6 +213,9 @@
         // delete window.__autojs_modules;
         
         console.log('AutoJS 模块初始化完成');
+        
+        // 标记 autojs 已就绪
+        window.__autojs_ready = true;
         
         // 触发自定义事件，通知模块加载完成
         if (typeof Event === 'function') {

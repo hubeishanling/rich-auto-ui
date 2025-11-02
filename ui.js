@@ -19,4 +19,8 @@ var web = ui['web'];
 pluginUtils.initWebView(web, moduleRegister, 'web/index.html');
 
 
+// images.requestScreenCapture();
+// let img = images.captureScreen();
+// ocr(img);
+
 
