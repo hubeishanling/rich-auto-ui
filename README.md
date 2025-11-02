@@ -13,7 +13,7 @@
 
 ---
 
-###  [完整文档地址](http://doc.sanguoyr.top)
+###  [完整文档地址](http://www.sanguoyr.top/doc/#/)
 
 ---
 
