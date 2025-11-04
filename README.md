@@ -23,16 +23,14 @@
 
 ---
 
-## 📖 项目简介
+视频教程： 正在录制
 
-**Rich AutoJS UI** 是一个专为 [AutoJS6](https://github.com/SuperMonster003/AutoJs6) 设计的现代化 UI 开发框架，它将传统的 AutoJS 开发方式提升到全新高度。通过 WebView 技术结合 Vue.js 生态，让开发者可以使用现代前端技术栈构建美观、易用、功能强大的移动端自动化脚本界面。
-
-### ✨ 核心特性
-
-- **现代化 UI** - 基于 Vue.js 2.6 + Vant UI 2.12，提供精美的移动端用户体验
-- **商业化流程** - 含登录、校验、更新、以及悬浮窗启动、停止脚本一整套流程代码
-- **数据安全** - 插件打包加密、前后端加密通信
-- **更新快速** - 对项目直接打包插件，方便更新。
+## 📖 项目解决的痛点
+1、对应用进行加密打包，别人无法再简单的拿到源码
+2、集成vue2+vant，可以直接用vue进行开发
+3、重点是支持打包成插件，不用重新打包成应用进行更新
+4、集成登录相关逻辑，包括卡密验证、脚本更新、与后端的通信加密
+所以整体来说，是一套很优秀的Autojs的前端框架模板，极大的缩减脚本开发后期的变现时间，并且让脚本的安全性得到了极大的保证。（RSA+AES联合加密通信数据）
 
 ### 🖼️ 界面预览
 
@@ -56,10 +54,10 @@
 
 | 工具/环境 | 版本要求 | 说明 |
 |---------|---------|------|
-| VSCode | 最新版 | 代码编辑器 |
+| VSCode/cursor | 无 | 代码编辑器 |
 | AutoJS6 VSCode 插件 | 最新版 | 用于连接手机调试 |
-| Android 设备 | 7.0+ | 测试设备 |
-| 安卓包 | 项目的release中下载 | [下载](https://github.com/yangrui110/rich-atuojs-ui/releases) |
+| Android 手机 | 7.0+ | 测试设备 |
+| Autojs APP | 项目的release中下载 | [下载](https://github.com/yangrui110/rich-atuojs-ui/releases) |
 
 
 ### 安装步骤
@@ -76,7 +74,7 @@ cd rich-atuojs-ui
 
 #### 方式二：下载压缩包
 
-直接从 [GitHub Releases](https://github.com/yangrui110/rich-atuojs-ui/releases) 下载最新版本的压缩包并解压。
+直接从 [GitHub Releases](https://github.com/yangrui110/rich-atuojs-ui/releases) 下载最新版本。
 
 ### 开发运行
 
