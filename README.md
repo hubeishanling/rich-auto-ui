@@ -23,7 +23,7 @@
 
 ---
 
-***视频教程***： [B站教学视频](https://www.bilibili.com/video/BV1D11kBDEgt/)
+***视频教程***： [B站初始化项目教学视频](https://www.bilibili.com/video/BV1D11kBDEgt/)、[打包部署教学视频](https://www.bilibili.com/video/BV1mD1kB7EY3/)、[游戏脚本实战教学视频](https://www.bilibili.com/video/BV13i14BCEUp/)
 
 ***QQ交流群***： 726703994
 
