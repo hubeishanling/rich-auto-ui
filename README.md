@@ -23,7 +23,7 @@
 
 ---
 
-***gitee项目地址:*** [gitee](https://gitee.com/yangrui110/rich-autojs-ui)
+**项目已被闪灵科技有限公司接管，服务器和文档地址暂时不可访问**
 
 ***github项目地址:*** [github](https://github.com/yangrui110/rich-autojs-ui)
 
