@@ -377,10 +377,10 @@ module.exports = {
                     };
                 }
                 
-                // 第一步：下载到临时目录（应用私有目录）
-                // 获取应用私有目录: /data/data/<包名>/files/
-                var privateDir = context.getFilesDir().getPath();
-                var tempDir = files.join(privateDir, 'temp/');
+                // 第一步：下载到临时目录（外部存储的应用专属目录）
+                // 获取外部存储的应用专属目录: /sdcard/Android/data/<包名>/files/
+                var externalDir = context.getExternalFilesDir(null).getPath();
+                var tempDir = files.join(externalDir, 'temp/');
                 if (!files.exists(tempDir)) {
                     new java.io.File(tempDir).mkdirs();
                 }
@@ -392,7 +392,6 @@ module.exports = {
                 var tempFileName = packageName + '.plugin_temp.apk';
                 tempFilePath = files.join(tempDir, tempFileName);
                 
-                console.log('[Business] 应用私有目录:', privateDir);
                 console.log('[Business] 写入临时文件:', tempFilePath);
                 files.writeBytes(tempFilePath, fileBytes);
                 
@@ -427,10 +426,10 @@ module.exports = {
                     toast('校验通过，正在保存文件...');
                 }
                 
-                // 第三步：移动到正式目录 (应用私有目录下的 file/project)
-                // /data/data/<包名>/files/file/project/
-                var privateDir = context.getFilesDir().getPath();
-                var projectDir = files.join(privateDir, 'project', 'plugins/');
+                // 第三步：移动到正式目录 (外部存储的应用专属目录)
+                // /sdcard/Android/data/<包名>/files/project/plugins/
+                var externalDir = context.getExternalFilesDir(null).getPath();
+                var projectDir = files.join(externalDir, 'project', 'plugins/');
                 if (!files.exists(projectDir)) {
                     new java.io.File(projectDir).mkdirs();
                 }

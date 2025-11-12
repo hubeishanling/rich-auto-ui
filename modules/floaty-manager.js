@@ -7,6 +7,39 @@
 var config = require('../config.js');
 var apiUtils = require('./utils/api-utils.js');
 
+/**
+ * 计算文件MD5值的辅助函数
+ * @param {string} filePath - 文件路径
+ * @returns {string|null} MD5值（小写），失败返回null
+ */
+function calculateFileMd5(filePath) {
+    try {
+        var MessageDigest = java.security.MessageDigest;
+        var FileInputStream = java.io.FileInputStream;
+        
+        var md = MessageDigest.getInstance("MD5");
+        var fis = new FileInputStream(filePath);
+        var buffer = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 8192);
+        var numRead = 0;
+        
+        while ((numRead = fis.read(buffer)) > 0) {
+            md.update(buffer, 0, numRead);
+        }
+        fis.close();
+        
+        var digest = md.digest();
+        var sb = new java.lang.StringBuilder();
+        for (var i = 0; i < digest.length; i++) {
+            var b = digest[i] & 0xFF;  // 转换为无符号字节
+            sb.append(java.lang.String.format("%02x", java.lang.Integer.valueOf(b)));
+        }
+        return sb.toString();
+    } catch (e) {
+        console.error('[FloatyManager] 计算MD5失败:', e);
+        return null;
+    }
+}
+
 module.exports = {
     /**
      * 执行预检查（Token验证和版本MD5校验）
@@ -50,9 +83,26 @@ module.exports = {
             console.log('预检查: 文件MD5 =', preCheckData.fileMd5);
             
             // ==================== 2. 版本MD5校验 ====================
-            // 获取本地存储的MD5值
-            var versionStorage = storages.create("version");
-            var localMd5 = versionStorage.get("fileMd5", "");
+            // 实时计算本地文件的MD5值
+            var localMd5 = "";
+            try {
+                // 获取当前插件文件路径
+                var packageName = context.getPackageName();
+                var externalDir = context.getExternalFilesDir(null).getPath();
+                var pluginPath = files.join(externalDir, 'project', 'plugins', packageName + '.plugin.apk');
+                
+                console.log('预检查: 插件文件路径 =', pluginPath);
+                
+                // 如果文件存在，计算MD5
+                if (files.exists(pluginPath)) {
+                    localMd5 = calculateFileMd5(pluginPath);
+                    console.log('预检查: 计算出的本地MD5 =', localMd5);
+                } else {
+                    console.warn('预检查: 插件文件不存在，跳过MD5校验');
+                }
+            } catch (e) {
+                console.error('预检查: 计算本地MD5失败', e);
+            }
             
             console.log('预检查: 本地MD5 =', localMd5);
             console.log('预检查: 服务器MD5 =', preCheckData.fileMd5);
@@ -69,13 +119,6 @@ module.exports = {
                 dialogs.alert('版本更新提示', updateMsg + '\n\n请打开APP手动更新到最新版本');
                 
                 return null;
-            }
-            
-            // 如果本地没有MD5值，保存服务器的MD5（首次运行）
-            if (!localMd5 && preCheckData.fileMd5) {
-                console.log('预检查: 首次运行，保存服务器MD5 =', preCheckData.fileMd5);
-                versionStorage.put("fileMd5", preCheckData.fileMd5);
-                versionStorage.put("version", preCheckData.version);
             }
             
             toast(preCheckData.message || '验证成功');

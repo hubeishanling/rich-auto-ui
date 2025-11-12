@@ -42,7 +42,8 @@ const API_CONFIG = {
         LATEST_VERSION: "/open-api/script/latest",
         PRE_CHECK: "/open-api/script/pre-check",
         GAME_DATA: "/open-api/script/game-data",
-        LOGS_UPLOAD: "/open-api/script/logs/upload"
+        LOGS_UPLOAD: "/open-api/script/logs/upload",
+        PRE_CHECK: "/open-api/script/pre-check"
     },
     
     // HTTP请求配置

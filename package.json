@@ -5,7 +5,6 @@
       "build_number": 1,
       "build_time": 1543638246643
     },
-    "iconPath": "logo.png",
     "icon": "logo.png",
     "main": "index.js",
     "name": "打包测试",
