@@ -23,8 +23,6 @@
 
 ---
 
-**项目已被闪灵科技有限公司接管，服务器和文档地址暂时不可访问**
-
 ***github项目地址:*** [github](https://github.com/hubeishanling/rich-auto-ui)
 
 ***视频教程***： 暂时未发布
