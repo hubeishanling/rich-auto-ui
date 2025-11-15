@@ -1,5 +1,5 @@
 /**
- * Image 模块 - 封装 AutoJS 的图像处理方法
+ * Image 模块 - 封装 RichAuto 的图像处理方法
  */
 
 module.exports = {

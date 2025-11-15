@@ -1,5 +1,5 @@
 /**
- * Automator 模块 - 封装 AutoJS 的自动化方法
+ * Automator 模块 - 封装 RichAuto 的自动化方法
  */
 
 module.exports = {

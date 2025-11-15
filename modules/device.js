@@ -1,5 +1,5 @@
 /**
- * Device 模块 - 封装 AutoJS 的设备相关方法
+ * Device 模块 - 封装 RichAuto 的设备相关方法
  */
 
 module.exports = {

@@ -1,5 +1,5 @@
 /**
- * Storages 模块 - 封装 AutoJS 的本地存储方法
+ * Storages 模块 - 封装 RichAuto 的本地存储方法
  */
 
 // 存储所有创建的 Storage 实例

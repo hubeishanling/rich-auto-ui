@@ -1,5 +1,5 @@
 /**
- * AutoJS 模块初始化
+ * RichAuto 模块初始化
  * 动态加载所有模块并初始化
  */
 
@@ -84,7 +84,7 @@
     function loadScript(url) {
         return new Promise(function(resolve, reject) {
             console.log('$richauto ==null?',$richauto )
-            // 检测是否在 AutoJS WebView 环境中（插件模式或开发模式）
+            // 检测是否在 RichAuto WebView 环境中（插件模式或开发模式）
             if (typeof $richauto !== 'undefined') {
                 // 使用 jsBridge 加载脚本内容
                 $richauto.invoke('fetch', { path: url })

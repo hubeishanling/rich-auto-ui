@@ -258,7 +258,7 @@ export default {
             try {
                 richauto.global.toastLog('尝试在可编辑控件中设置文本...');
                 // 查找可编辑的控件并设置文本
-                const success = await richauto.uiselector.editable(true).setText('Hello AutoJS');
+                const success = await richauto.uiselector.editable(true).setText('Hello RichAuto');
                 richauto.global.toastLog(`设置文本${success ? '成功' : '失败'}`);
             } catch (err) {
                 richauto.global.toastLog('错误: ' + err);

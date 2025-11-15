@@ -1,5 +1,5 @@
 /**
- * Color 模块 - 封装 AutoJS 的颜色处理方法
+ * Color 模块 - 封装 RichAuto 的颜色处理方法
  */
 
 module.exports = {

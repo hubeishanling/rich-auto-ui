@@ -1,5 +1,5 @@
 /**
- * Engines 模块 - 封装 AutoJS 的脚本引擎方法
+ * Engines 模块 - 封装 RichAuto 的脚本引擎方法
  */
 
 module.exports = {

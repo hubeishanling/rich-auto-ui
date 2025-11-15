@@ -1,5 +1,5 @@
 /**
- * HTTP 模块 - 封装 AutoJS 的 HTTP 请求方法
+ * HTTP 模块 - 封装 RichAuto 的 HTTP 请求方法
  */
 
 module.exports = {

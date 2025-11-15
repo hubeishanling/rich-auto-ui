@@ -88,7 +88,7 @@ export default {
                 const ajVersionCode = await richauto.app.richauto.getVersionCode();
                 const ajVersionName = await richauto.app.richauto.getVersionName();
                 
-                richauto.global.toastLog(`当前软件: ${versionName} (${versionCode})\nAutoJS: ${ajVersionName} (${ajVersionCode})`);
+                richauto.global.toastLog(`当前软件: ${versionName} (${versionCode})\nRichAuto: ${ajVersionName} (${ajVersionCode})`);
             } catch (err) {
                 richauto.global.toastLog('获取版本信息失败: ' + err);
             }
@@ -223,7 +223,7 @@ export default {
         // 测试启动 Activity
         async testStartActivity() {
             try {
-                // 启动 AutoJS 的日志界面
+                // 启动 RichAuto 的日志界面
                 await richauto.app.startActivity('console');
                 richauto.global.toastLog('已启动日志界面');
             } catch (err) {

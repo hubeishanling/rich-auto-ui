@@ -1,5 +1,5 @@
 /**
- * App 模块 - 封装 AutoJS 的通用应用方法
+ * App 模块 - 封装 RichAuto 的通用应用方法
  */
 
 module.exports = {
@@ -20,13 +20,13 @@ module.exports = {
             return app.versionName;
         });
         
-        // 获取 AutoJS 版本号
-        jsBridge.handle('app.autojs.versionCode', function(event) {
+        // 获取 RichAuto 版本号
+        jsBridge.handle('app.richauto.versionCode', function(event) {
             return app.autojs.versionCode;
         });
         
-        // 获取 AutoJS 版本名称
-        jsBridge.handle('app.autojs.versionName', function(event) {
+        // 获取 RichAuto 版本名称
+        jsBridge.handle('app.richauto.versionName', function(event) {
             return app.autojs.versionName;
         });
         
@@ -128,7 +128,7 @@ module.exports = {
         // Intent 转 Shell 命令
         jsBridge.handle('app.intentToShell', function(event) {
             if (typeof app.intentToShell !== 'function') {
-                throw new Error('app.intentToShell 不可用，此功能需要 AutoJS v4.1.0 或更高版本');
+                throw new Error('app.intentToShell 不可用，此功能需要 RichAuto v4.1.0 或更高版本');
             }
             var args = Array.prototype.slice.call(arguments, 1);
             return app.intentToShell.apply(app, args);
@@ -153,7 +153,7 @@ module.exports = {
         // 解析 Uri
         jsBridge.handle('app.parseUri', function(event) {
             if (typeof app.parseUri !== 'function') {
-                throw new Error('app.parseUri 不可用，此功能需要 AutoJS v4.1.0 或更高版本');
+                throw new Error('app.parseUri 不可用，此功能需要 RichAuto v4.1.0 或更高版本');
             }
             var args = Array.prototype.slice.call(arguments, 1);
             var uri = app.parseUri.apply(app, args);
@@ -164,7 +164,7 @@ module.exports = {
         // 获取文件 Uri
         jsBridge.handle('app.getUriForFile', function(event) {
             if (typeof app.getUriForFile !== 'function') {
-                throw new Error('app.getUriForFile 不可用，此功能需要 AutoJS v4.1.0 或更高版本');
+                throw new Error('app.getUriForFile 不可用，此功能需要 RichAuto v4.1.0 或更高版本');
             }
             var args = Array.prototype.slice.call(arguments, 1);
             var uri = app.getUriForFile.apply(app, args);

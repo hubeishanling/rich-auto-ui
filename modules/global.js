@@ -1,5 +1,5 @@
 /**
- * Global 模块 - 封装 AutoJS 的全局方法
+ * Global 模块 - 封装 RichAuto 的全局方法
  */
 
 module.exports = {
@@ -95,7 +95,7 @@ module.exports = {
             return requiresApi.apply(null, args);
         });
 
-        // 要求最低 AutoJS 版本
+        // 要求最低 RichAuto 版本
         jsBridge.handle('global.requiresAutojsVersion', function(event) {
             var args = Array.prototype.slice.call(arguments, 1);
             return requiresAutojsVersion.apply(null, args);

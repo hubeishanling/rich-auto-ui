@@ -1,5 +1,5 @@
 /**
- * UiSelector 模块 - 封装 AutoJS 的 UI 选择器方法
+ * UiSelector 模块 - 封装 RichAuto 的 UI 选择器方法
  */
 
 module.exports = {

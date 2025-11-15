@@ -1,5 +1,5 @@
 /**
- * AutoJS 本体应用模块 - Web 端封装
+ * RichAuto 本体应用模块 - Web 端封装
  */
 
 (function(window) {
@@ -8,7 +8,7 @@
     // 确保命名空间存在
     window.__richauto_modules = window.__richauto_modules || {};
     
-    // AutoJS 本体应用模块定义
+    // RichAuto 本体应用模块定义
     var richautoModule = {
         // ==================== 语言设置 ====================
         

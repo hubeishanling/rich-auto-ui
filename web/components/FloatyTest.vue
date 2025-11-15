@@ -53,110 +53,110 @@ export default {
         // 测试设置位置
         async testSetPosition() {
             if (!this.currentWindow) {
-                autojs.global.toastLog('请先创建悬浮窗');
+                richauto.global.toastLog('请先创建悬浮窗');
                 return;
             }
             
             try {
-                const width = await autojs.device.width;
-                const height = await autojs.device.height;
+                const width = await richauto.device.width;
+                const height = await richauto.device.height;
                 const x = width / 2 - 100;
                 const y = height / 2 - 100;
                 
                 await this.currentWindow.setPosition(x, y);
-                autojs.global.toastLog(`悬浮窗已移动到: (${Math.round(x)}, ${Math.round(y)})`);
+                richauto.global.toastLog(`悬浮窗已移动到: (${Math.round(x)}, ${Math.round(y)})`);
             } catch (err) {
-                autojs.global.toastLog('移动失败: ' + err);
+                richauto.global.toastLog('移动失败: ' + err);
             }
         },
         
         // 测试获取位置
         async testGetPosition() {
             if (!this.currentWindow) {
-                autojs.global.toastLog('请先创建悬浮窗');
+                richauto.global.toastLog('请先创建悬浮窗');
                 return;
             }
             
             try {
                 const x = await this.currentWindow.getX();
                 const y = await this.currentWindow.getY();
-                autojs.global.toastLog(`当前位置: (${x}, ${y})`);
+                richauto.global.toastLog(`当前位置: (${x}, ${y})`);
             } catch (err) {
-                autojs.global.toastLog('获取位置失败: ' + err);
+                richauto.global.toastLog('获取位置失败: ' + err);
             }
         },
         
         // 测试设置大小
         async testSetSize() {
             if (!this.currentWindow) {
-                autojs.global.toastLog('请先创建悬浮窗');
+                richauto.global.toastLog('请先创建悬浮窗');
                 return;
             }
             
             try {
                 await this.currentWindow.setSize(400, 300);
-                autojs.global.toastLog('悬浮窗大小已设置为: 400x300');
+                richauto.global.toastLog('悬浮窗大小已设置为: 400x300');
             } catch (err) {
-                autojs.global.toastLog('设置大小失败: ' + err);
+                richauto.global.toastLog('设置大小失败: ' + err);
             }
         },
         
         // 测试获取大小
         async testGetSize() {
             if (!this.currentWindow) {
-                autojs.global.toastLog('请先创建悬浮窗');
+                richauto.global.toastLog('请先创建悬浮窗');
                 return;
             }
             
             try {
                 const width = await this.currentWindow.getWidth();
                 const height = await this.currentWindow.getHeight();
-                autojs.global.toastLog(`当前大小: ${width}x${height}`);
+                richauto.global.toastLog(`当前大小: ${width}x${height}`);
             } catch (err) {
-                autojs.global.toastLog('获取大小失败: ' + err);
+                richauto.global.toastLog('获取大小失败: ' + err);
             }
         },
         
         // 测试切换调整按钮
         async testSetAdjustEnabled() {
             if (!this.currentWindow) {
-                autojs.global.toastLog('此功能仅适用于带调整功能的悬浮窗');
+                richauto.global.toastLog('此功能仅适用于带调整功能的悬浮窗');
                 return;
             }
             
             try {
                 this.adjustEnabled = !this.adjustEnabled;
                 await this.currentWindow.setAdjustEnabled(this.adjustEnabled);
-                autojs.global.toastLog(`调整按钮已${this.adjustEnabled ? '启用' : '禁用'}`);
+                richauto.global.toastLog(`调整按钮已${this.adjustEnabled ? '启用' : '禁用'}`);
             } catch (err) {
-                autojs.global.toastLog('切换失败: ' + err);
+                richauto.global.toastLog('切换失败: ' + err);
             }
         },
         
         // 测试关闭当前悬浮窗
         async testClose() {
             if (!this.currentWindow) {
-                autojs.global.toastLog('没有可关闭的悬浮窗');
+                richauto.global.toastLog('没有可关闭的悬浮窗');
                 return;
             }
             
             try {
                 await this.currentWindow.close();
                 this.currentWindow = null;
-                autojs.global.toastLog('悬浮窗已关闭');
+                richauto.global.toastLog('悬浮窗已关闭');
             } catch (err) {
-                autojs.global.toastLog('关闭失败: ' + err);
+                richauto.global.toastLog('关闭失败: ' + err);
             }
         },
         
         // 关闭所有悬浮窗
         async testCloseAll() {
             try {
-                await autojs.floaty.closeAll();
+                await richauto.floaty.closeAll();
                 this.currentWindow = null;
-                autojs.global.toastLog('所有悬浮窗已关闭');
+                richauto.global.toastLog('所有悬浮窗已关闭');
             } catch (err) {
-                autojs.global.toastLog('关闭失败: ' + err);
+                richauto.global.toastLog('关闭失败: ' + err);
             }
         },
         
@@ -165,7 +165,7 @@ export default {
         // 测试 HTML 悬浮窗
         async testHtmlFloaty() {
             try {
-                autojs.global.toastLog('正在创建 HTML 悬浮窗...');
+                richauto.global.toastLog('正在创建 HTML 悬浮窗...');
                 
                 // 使用数组 join 方法避免 Vue SFC 解析器对 script 标签的误解析
                 const htmlContent = [
@@ -186,7 +186,7 @@ export default {
                     '<h1>🎨 HTML 悬浮窗</h1>',
                     '<p>这是一个使用 HTML 创建的悬浮窗</p>',
                     '<div class="time" id="time">00:00:00</div>',
-                    '<button onclick="alert(\'你好，AutoJS!\')">点击我</button>',
+                    '<button onclick="alert(\'你好，RichAuto!\')">点击我</button>',
                     '<' + 'script>',  // 分割避免被 Vue 解析器误解析
                     'function updateTime() {',
                     '  const now = new Date();',
@@ -200,26 +200,26 @@ export default {
                     '</' + 'html>'
                 ].join('');
                 
-                this.currentWindow = await autojs.floaty.window(htmlContent, {
+                this.currentWindow = await richauto.floaty.window(htmlContent, {
                     type: 'html',
                     width: '350',
                     height: '500'
                 });
                 
-                autojs.global.toastLog('HTML 悬浮窗创建成功！');
+                richauto.global.toastLog('HTML 悬浮窗创建成功！');
                 
                 // 设置初始位置
                 await this.currentWindow.setPosition(50, 100);
                 
             } catch (err) {
-                autojs.global.toastLog('创建 HTML 悬浮窗失败: ' + err);
+                richauto.global.toastLog('创建 HTML 悬浮窗失败: ' + err);
             }
         },
         
         // 测试 Vue 悬浮窗
         async testVueFloaty() {
             try {
-                autojs.global.toastLog('正在创建 Vue 悬浮窗...');
+                richauto.global.toastLog('正在创建 Vue 悬浮窗...');
                 
                 const vueTemplate = '<div style="padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; text-align: center;">' +
                     '<h2>⚡ Vue 悬浮窗</h2>' +
@@ -236,45 +236,45 @@ export default {
                 const vueScript = 'data() { return { count: 0, message: "这是一个 Vue 组件悬浮窗" } }, ' +
                     'methods: { increment() { this.count++; }, decrement() { this.count--; } }';
                 
-                this.currentWindow = await autojs.floaty.window(vueTemplate, {
+                this.currentWindow = await richauto.floaty.window(vueTemplate, {
                     type: 'vue',
                     vueScript: vueScript,
                     width: '350',
                     height: '450'
                 });
                 
-                autojs.global.toastLog('Vue 悬浮窗创建成功！');
+                richauto.global.toastLog('Vue 悬浮窗创建成功！');
                 
                 // 设置初始位置
                 await this.currentWindow.setPosition(50, 100);
                 
             } catch (err) {
-                autojs.global.toastLog('创建 Vue 悬浮窗失败: ' + err);
+                richauto.global.toastLog('创建 Vue 悬浮窗失败: ' + err);
             }
         },
         
         // 测试 URL 悬浮窗
         async testUrlFloaty() {
             try {
-                autojs.global.toastLog('正在创建 URL 悬浮窗...');
+                richauto.global.toastLog('正在创建 URL 悬浮窗...');
                 
                 // 可以加载任何网页
                 const url = 'https://www.baidu.com';
                 
-                this.currentWindow = await autojs.floaty.window(url, {
+                this.currentWindow = await richauto.floaty.window(url, {
                     type: 'html', // URL 也使用 html 类型
                     url: url,
                     width: '400',
                     height: '600'
                 });
                 
-                autojs.global.toastLog('URL 悬浮窗创建成功！');
+                richauto.global.toastLog('URL 悬浮窗创建成功！');
                 
                 // 设置初始位置
                 await this.currentWindow.setPosition(30, 80);
                 
             } catch (err) {
-                autojs.global.toastLog('创建 URL 悬浮窗失败: ' + err);
+                richauto.global.toastLog('创建 URL 悬浮窗失败: ' + err);
             }
         }
     }

@@ -1,21 +1,7 @@
-/**
- * 应用配置管理模块
- * 
- * 本文件集中管理应用的所有配置项，包括：
- * - API配置：服务器地址、加密密钥、端点等
- * - 应用配置：应用信息、存储键名、悬浮窗配置等
- * 
- * 使用方法：
- * const config = require('./config.js');
- * console.log(config.BASE_URL);              // 快捷访问
- * console.log(config.FLOATY_CONFIG);         // 悬浮窗配置
- * console.log(config.API_CONFIG.CLIENT_ID);  // 完整路径访问
- */
-
 // API配置
 const API_CONFIG = {
     // 基础URL，实际部署时请修改为正确的服务器地址
-    BASE_URL: "http://www.sanguoyr.top/prod-api/",
+    BASE_URL: "http://www.sanguoyr.top/prod-api",
     CLIENT_ID: "f36c69cd4655566bbfac652e479cb931",
     
     // 加密配置
@@ -24,14 +10,14 @@ const API_CONFIG = {
         ENABLED: true,
         // 加密头部标识
         HEADER_FLAG: "encrypt-key",
-        PUBLIC_KEY: "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4i+V7LlzsIbk2KcKEb3sb3a/gEbUn7FInsLD0l/KcgZPgw96REee/Y5JuppWnn/QbIY6zJmwOlhOENg2tKq4MxDV8GFvSDnW+O2u0DmAiXKdRsVd+ox1Gi3uu6R/9RiRptb7Zf7+ZSrX+dHSoi0Dh51KBaGEX1kZpVDCj016ViQIDAQAB",
+        PUBLIC_KEY: "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDnsoDGl6TWsVSLov1EgTiVE3+GeXMKNASQ190VdoGx0HukhnuT6q8fv+zlByjSqwZI1NCdLUKRa/LvQIxjbsAeCpbwP31OGnKQtcjSwBbDe34wREdcdzp8hy8rHeZe4AUvZ0CLYJS/hJqKq7/8zjmgHI4XGetkO23eFRdZIXX45QIDAQAB",
         // RSA私钥（用于解密服务器响应）
         // 注意：这是前端解密用的私钥，对应后端配置中的响应加密公钥
-        PRIVATE_KEY: "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMM8Oh8n8Co8CQ3nmsn2fH29+xJdBVPe9hg/fIBksMtKKh1Hh97ZL1sU2fg2wNDMe40iN/mBj260Q8Vn04wiSiCzNQCyI6zDnguRYXrV3gLKMNsxyJA7uQaFbkApCabkMU4rIu2G6Wm79wDJIYgQGeEh5ca93NiAV4gt7mzuPGkXAgMBAAECgYBKJuheaAFgUTARL2vLlIphCdS/+0OoQNFQkWBctaGufKs1NrNk0TGa0vccvtMKGvg8OQhwhCRxpBbvdclT+rwTNzlehXuZBo81CulVZgKxmLML0IUQJw7GVL0+GZlsEjMpNkQWm3ABVvCwO5IyfyqHDZ3OhAaJWTDuz4GRphgJBQJBAP3tymoeIU/Z4jlbBDkL9Y661ThIOsZI7ei/At3E3FSMGW1+GI7mPZDjTcUeknqUc3h1ua/bVcGgOOJqdgw8+EMCQQDE0+H8HqzW9DsYCmjRPYe5LyBFkVZzMQGVqMw58vxKjP80cuqvPgdVm9hy9oJSBy1Uek79wXGiV859p4GpeLidAkB+54VerXo2fwzZX0xn+jsZvvPqseZ1zGLiC/wxuz3mHzJiDz/UwuqH66GlXxcTnfdrf2Jyqepc32cueMhQa3QjAkALLBu/u94DtYlFLBIXDm8Ny+cBC+bkUvvMCvDMuUYo1SgHSh6YI+U2rsnyfJuZHF8uVGL3dGuG04UdDM0HWZrhAkEA84ZxxG2IqzftFwl9DpeBjKLDvheeDxtxzVPsWP1jvllwXQX5ioNIeeWTaN1tqk//mPSfYN9cYhGrI+R/NJrJKQ=="
+        PRIVATE_KEY: "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBANTzfr/fP+G4Cp27oqC+H3Y29c3nk4zLMpMXhvtqSMCiozqo64+nFXWTahu1Ld1I7jFNQHkZsTi4ASeJux5RerO0/F6VfbcwSe0PFEXxggZw6stKAWhGQp3o76/Dp1ILvrWOsFb1RCblCJIw/ZPVigqgFsejAukEcEnKeYFgdGNNAgMBAAECgYAhdv51MqU8WIq6jPEap6YUEsEAEaNbXdddzDW3LtWuCCD0p/UUxyIVLwxevFMv0jU0ZDp8jXAPRMNRrlBMjGtmpsQ7viimkQc+wEYkGzpbRrNM3NAGEitKrt/ZRUyiHWOIxsqu8H3rA5NiMCZDwouMGmoRfnkuCzLmMhz5dvCKtQJBAPiQKRcOvpVpbstQ8miA8IuMNg0fUqcv389kfAZclTX4hI+SFVkVnbyIQUJTzYrsXZYgbs3p/O6Rh9TeVImKU28CQQDbUpGnMFa+381+xpK2QcZzyNTrCFeJaff8slkSFLBOgyYGz/bPybqcZgYGig9AN9iwOZyad+MaS8tnmFobGKcDAkBlKb8ffEfC5atLIoHWWIwOL52cD6CDHO/5J4t2x12PHrtM94aqwCp3nfj5dsQUA4k/XanbMp1Xt3FSCL7dT6gPAkAWa/6QBRUZNnAfwdVF5LuRIrsBvDyWw8qifuk0PAE6RZYhpCkrXQhC7Ps4t+yPOCZi/cDQ2ejRy2XkFWNA2ehZAkEA4vgG40y8g843MEQt+BwA2/Fxu3uwfG8aBeY9XlwSPKlOGAgZoHer9RD2Yjr4kC36gLy4CljfnIckLZqTJ6wI2A=="
     },
     
     // 租户ID
-    TENANT_ID: "344269",
+    TENANT_ID: "027048",
     
     // API端点
     ENDPOINTS: {
@@ -40,10 +26,9 @@ const API_CONFIG = {
         CARD_INFO: "/open-api/script/card-info",
         VERIFY: "/open-api/script/verify",
         LATEST_VERSION: "/open-api/script/latest",
-        PRE_CHECK: "/open-api/script/pre-check",
         GAME_DATA: "/open-api/script/game-data",
         LOGS_UPLOAD: "/open-api/script/logs/upload",
-        PRE_CHECK: "/open-api/script/pre-check"
+		PRE_CHECK: "/open-api/script/pre-check"
     },
     
     // HTTP请求配置
@@ -57,14 +42,14 @@ const API_CONFIG = {
 const APP_CONFIG = {
     // 应用信息
     APP_INFO: {
-        NAME: "Rich AutoJS UI",
+        NAME: "Rich Auto UI",
         VERSION: "1.0.0",
         DEVELOPER: "闪灵科技有限公司",
         UPDATE_DATE: "2025-10-31"
     },
     
     // 游戏ID配置
-    GAME_ID: "1979562872183189505",  // 默认游戏ID，根据实际情况修改
+    GAME_ID: "1989585815337754626",  // 默认游戏ID，根据实际情况修改
     
     // 存储键名
     STORAGE_KEYS: {
@@ -120,4 +105,3 @@ module.exports = {
     get STORAGE_KEYS() { return APP_CONFIG.STORAGE_KEYS; },
     get FLOATY_CONFIG() { return APP_CONFIG.FLOATY_CONFIG; }
 };
-

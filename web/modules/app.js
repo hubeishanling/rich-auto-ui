@@ -29,11 +29,11 @@
         },
         
         /**
-         * richauto 对象 - AutoJS 版本信息
+         * richauto 对象 - RichAuto 版本信息
          */
         richauto: {
             /**
-             * 获取 AutoJS 版本号
+             * 获取 RichAuto 版本号
              * @returns {Promise<number>}
              */
             getVersionCode: function() {
@@ -41,7 +41,7 @@
             },
             
             /**
-             * 获取 AutoJS 版本名称
+             * 获取 RichAuto 版本名称
              * @returns {Promise<string>}
              */
             getVersionName: function() {
@@ -169,7 +169,7 @@
         /**
          * 启动 Activity
          * 支持两种重载：
-         * 1. startActivity(name) - 启动 AutoJS 特定界面（'console', 'settings'）
+         * 1. startActivity(name) - 启动 RichAuto 特定界面（'console', 'settings'）
          * 2. startActivity(options) - 根据选项启动 Activity
          * @returns {Promise<void>}
          */

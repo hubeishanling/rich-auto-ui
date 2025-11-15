@@ -1,5 +1,5 @@
 /**
- * Floaty 模块 - 封装 AutoJS 的悬浮窗方法
+ * Floaty 模块 - 封装 RichAuto 的悬浮窗方法
  */
 
 module.exports = {

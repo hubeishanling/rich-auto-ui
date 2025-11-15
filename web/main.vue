@@ -92,22 +92,22 @@ export default {
     methods: {
         // 日志工具
         log(level, ...args) {
-            if (window.autojs && window.autojs.log) {
-                window.autojs.log[level](...args);
+            if (window.richauto && window.richauto.log) {
+                window.richauto.log[level](...args);
             } else {
                 console[level](...args);
             }
         },
         
-        // 调用 AutoJS 自定义方法
+        // 调用 RichAuto 自定义方法
         async callAutoJS(method, ...params) {
             try {
-                if (window.$autojs) {
+                if (window.$richauto) {
                     // 直接传递参数，返回值已经是对象，不需要 JSON 处理
-                    const result = await window.$autojs.invoke(method, ...params);
+                    const result = await window.$richauto.invoke(method, ...params);
                     return result;
                 } else {
-                    throw new Error('AutoJS 未初始化');
+                    throw new Error('RichAuto 未初始化');
                 }
             } catch (error) {
                 this.log('error', `调用 ${method} 失败:`, error);
@@ -256,8 +256,8 @@ export default {
         initFloatyManager() {
             try {
                 // 注册悬浮窗动作处理器
-                if (window.autojs && window.autojs.floatyManager) {
-                    window.autojs.floatyManager.onAction((action) => {
+                if (window.richauto && window.richauto.floatyManager) {
+                    window.richauto.floatyManager.onAction((action) => {
                         this.handleFloatyAction(action);
                     });
                     this.log('debug', '悬浮窗管理器已初始化');
@@ -311,15 +311,15 @@ export default {
             try {
                 if (this.switches.floaty) {
                     // 关闭悬浮窗
-                    if (window.autojs && window.autojs.floatyManager) {
-                        await window.autojs.floatyManager.remove();
+                    if (window.richauto && window.richauto.floatyManager) {
+                        await window.richauto.floatyManager.remove();
                         this.switches.floaty = false;
                         this.$toast('悬浮窗已关闭');
                     }
                 } else {
                     // 打开悬浮窗
-                    if (window.autojs && window.autojs.floatyManager) {
-                        await window.autojs.floatyManager.create();
+                    if (window.richauto && window.richauto.floatyManager) {
+                        await window.richauto.floatyManager.create();
                         this.switches.floaty = true;
                         this.$toast('悬浮窗已打开');
                     }

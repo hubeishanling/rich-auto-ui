@@ -1,5 +1,5 @@
 /**
- * Base64 模块 - 封装 AutoJS 的 Base64 编码解码方法
+ * Base64 模块 - 封装 RichAuto 的 Base64 编码解码方法
  */
 
 module.exports = {

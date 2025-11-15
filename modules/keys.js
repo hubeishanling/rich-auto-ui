@@ -1,5 +1,5 @@
 /**
- * Keys 模块 - 封装 AutoJS 的按键模拟方法
+ * Keys 模块 - 封装 RichAuto 的按键模拟方法
  */
 
 module.exports = {

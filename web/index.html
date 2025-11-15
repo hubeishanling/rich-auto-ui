@@ -88,7 +88,7 @@
 <script src="ext/vant.min.js"></script>
 <script src="richauto://events.js"></script>
 <script src="richauto://sdk/v1.js"></script>
-<!-- AutoJS 模块加载器 - 只需引入这一个文件 -->
+<!-- RichAuto 模块加载器 - 只需引入这一个文件 -->
 <script src="modules/init.js"></script>
 <script>
     let { loadModule, vueVersion } = window['vue2-sfc-loader'];
@@ -181,12 +181,12 @@
     // 等待 richauto 模块加载完成后再初始化 Vue 应用
     // 如果已经就绪，直接初始化；否则等待事件
     if (window.__richauto_ready) {
-        console.log('AutoJS 已就绪，直接初始化 Vue');
+        console.log('RichAuto 已就绪，直接初始化 Vue');
         initVueApp();
     } else {
-        console.log('等待 AutoJS 就绪事件...');
+        console.log('等待 RichAuto 就绪事件...');
         window.addEventListener('richauto-ready', function() {
-            console.log('收到 AutoJS 就绪事件');
+            console.log('收到 RichAuto 就绪事件');
             initVueApp();
         });
     }

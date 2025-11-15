@@ -50,14 +50,14 @@ export default {
         }
     },
     methods: {
-        // 调用 AutoJS 方法
+        // 调用 RichAuto 方法
         async callAutoJS(method, ...params) {
             try {
-                if (window.$autojs) {
-                    const result = await window.$autojs.invoke(method, ...params);
+                if (window.$richauto) {
+                    const result = await window.$richauto.invoke(method, ...params);
                     return result;
                 } else {
-                    throw new Error('AutoJS 未初始化');
+                    throw new Error('RichAuto 未初始化');
                 }
             } catch (error) {
                 console.error(`调用 ${method} 失败:`, error);
@@ -68,15 +68,15 @@ export default {
         // 切换悬浮窗
         async toggleFloaty() {
             try {
-                if (window.autojs && window.autojs.floatyManager) {
+                if (window.richauto && window.richauto.floatyManager) {
                     if (this.floatyEnabled) {
                         // 关闭悬浮窗
-                        await window.autojs.floatyManager.remove();
+                        await window.richauto.floatyManager.remove();
                         this.$emit('update:floaty-enabled', false);
                         this.$toast('悬浮窗已关闭');
                     } else {
                         // 打开悬浮窗
-                        await window.autojs.floatyManager.create();
+                        await window.richauto.floatyManager.create();
                         this.$emit('update:floaty-enabled', true);
                         this.$toast('悬浮窗已打开');
                     }

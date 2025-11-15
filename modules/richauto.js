@@ -1,5 +1,5 @@
 /**
- * AutoJS 本体应用模块 - 封装 AutoJS6 应用相关的属性和方法
+ * RichAuto 本体应用模块 - 封装 AutoJS6 应用相关的属性和方法
  */
 
 module.exports = {

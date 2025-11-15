@@ -1,5 +1,5 @@
 /**
- * Notice 模块 - 封装 AutoJS 的消息通知方法
+ * Notice 模块 - 封装 RichAuto 的消息通知方法
  */
 
 module.exports = {

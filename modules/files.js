@@ -1,5 +1,5 @@
 /**
- * Files 模块 - 封装 AutoJS 的文件处理方法
+ * Files 模块 - 封装 RichAuto 的文件处理方法
  */
 
 module.exports = {

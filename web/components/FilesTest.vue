@@ -190,7 +190,7 @@ export default {
                 // 先确保目录存在
                 await richauto.files.ensureDir(this.testDir);
                 
-                const text = 'Hello AutoJS!\n这是测试文本。\n时间: ' + new Date().toLocaleString();
+                const text = 'Hello RichAuto!\n这是测试文本。\n时间: ' + new Date().toLocaleString();
                 await richauto.files.write(this.testFile, text);
                 richauto.global.toastLog('文本写入成功: ' + this.testFile);
             } catch (err) {

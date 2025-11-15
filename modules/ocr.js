@@ -1,5 +1,5 @@
 /**
- * OCR 模块 - 封装 AutoJS 的光学字符识别方法
+ * OCR 模块 - 封装 RichAuto 的光学字符识别方法
  */
 
 module.exports = {
