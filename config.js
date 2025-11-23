@@ -42,7 +42,7 @@ const API_CONFIG = {
 const APP_CONFIG = {
     // 应用信息
     APP_INFO: {
-        NAME: "Rich Auto UI",
+        NAME: "Rich AutoJS UI",
         VERSION: "1.0.0",
         DEVELOPER: "闪灵科技有限公司",
         UPDATE_DATE: "2025-10-31"
@@ -82,7 +82,7 @@ const APP_CONFIG = {
         
         // 悬浮 WebView 页面路径
         // 点击配置按钮时显示的页面
-        WEBVIEW_PAGE: "web/index.html",
+        WEBVIEW_PAGE: "web/config.html",
         
         // 悬浮 WebView 窗口标题
         WEBVIEW_TITLE: "配置页面"
